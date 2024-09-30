@@ -100,10 +100,39 @@ while(true){
 	case 7:
 		quit = 1;
 		break;
-    case 5:
-	                           
+    
+	case 5:{
+		
+	
+	        char recherche[30];
+                printf("Entrez le titre du livre à supprimer: ");
+                scanf("%s", recherche);
 
+                int found = 0;
+                for (int i = 0; i < stock; i++) {
+                    if (strcmp(titre[i], recherche) == 0) {
+                        for (int j = i; j < stock - 1; j++) {
+                            strcpy(titre[j], titre[j + 1]);
+                            strcpy(auteur[j], auteur[j + 1]);
+                            prix[j] = prix[j + 1];
+                            quantite[j] = quantite[j + 1];
+                        }
+                        stock--;
+                        printf("Livre supprimé avec succès !\n");
+                        found = 1;
+                        break;
+                    }
+                }
+                if (!found) {
+                    printf("Livre non trouvé.\n");
+                }
+                break;
+            }
+	case 6:{
 
+            printf("les livres en stock : %d\n", stock);
+                break;
+            }	   
 }
 if(quit==1){break;}
 }}
